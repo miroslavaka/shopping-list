@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Nunito Sans', sans-serif;
+  margin: 0 auto;
+}
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  color: #42b983;
+  text-align: center;
+  margin-top: 2rem;
+}
+form {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+form button {
+  all: unset;
+  margin-left: 5px;
+  cursor: pointer;
+}
+form .icon {
+  color: #fff;
+  background-color: #42b983;
+  padding: 15px;
+  border-radius: 4px;
+}
+input[type='text'] {
+  outline: none;
+  border: 1px solid lightgray;
+  padding: 15px;
+  margin-left: 5px;
+  border-radius: 4px;
+}
+input[type='checkbox'] {
+  appearance: none;
+  /*not removed via appearance*/
+  margin: 0;
+  border: 2px solid #42b983;
+  border-radius: 50%;
+  width: 1rem;
+  height: 1rem;
+}
+input[type='checkbox']:checked {
+  appearance: none;
+  /*not removed via appearance*/
+  margin: 0;
+  border: 2px solid white;
+  border-radius: 50%;
+  width: 1rem;
+  height: 1rem;
+}
+input[type='checkbox']:checked::before {
+  content: '	\2713';
+  position: relative;
+  top: -10px;
+  left: 0px;
+  font-size: 1.2rem;
+  color: #42b983;
+}
+
+.list {
+  padding: 2rem 0;
+  line-height: 1.7;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 3rem;
+}
+.list ul {
+  margin: 0 auto;
+}
+.list li {
+  display: grid;
+  grid-template-columns: 1rem 12rem 3rem 6rem 2rem 2rem;
+  gap: 1rem;
+  align-items: center;
+}
+.list li button {
+  border: none;
+  padding: 8px 0;
+  margin: 3px 0;
+  border-radius: 2px;
+}
+.list li button:hover {
+  background-color: olivedrab;
+  cursor: pointer;
+}
