@@ -13,9 +13,9 @@ import Items from './components/Items';
 const initialItems = [
   { name: 'bread', quantity: '1', unit: 'pc', selected: false },
   { name: 'butter', quantity: '1', unit: 'pc', selected: false },
-  { name: 'milk', quantity: '3', unit: 'liter', selected: true },
+  { name: 'milk', quantity: '3', unit: 'liter', selected: false },
   { name: 'orange juice', quantity: '2', unit: 'liter', selected: false },
-  { name: 'banana', quantity: '0.5', unit: 'kg', selected: true },
+  { name: 'banana', quantity: '0.5', unit: 'kg', selected: false },
 ];
 
 function App() {
@@ -33,6 +33,14 @@ function App() {
     );
     setUpdatedItems(updatedListAfterDelete);
   }
+
+  function handleCheckItem(name) {
+    console.log('item to be updated: ', name);
+    const booksAfterUpdate = updatedItems.map((item) =>
+      item.name === name ? { ...item, selected: !item.selected } : item,
+    );
+    setUpdatedItems(booksAfterUpdate);
+  }
   return (
     <>
       <div className="App">
@@ -42,6 +50,7 @@ function App() {
           initialItems={initialItems}
           updatedItems={updatedItems}
           onDeletedItem={handleDeleteItem}
+          onHandleCheck={handleCheckItem}
         />
       </div>
     </>

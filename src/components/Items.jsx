@@ -1,6 +1,11 @@
 import Item from './Item';
 
-const Items = ({ initialItems, updatedItems, onDeletedItem }) => {
+const Items = ({
+  initialItems,
+  updatedItems,
+  onDeletedItem,
+  onHandleCheck,
+}) => {
   return (
     <section className="list">
       <ul>
@@ -8,6 +13,7 @@ const Items = ({ initialItems, updatedItems, onDeletedItem }) => {
           initialItems={initialItems}
           updatedItems={updatedItems}
           onDeletedItem={onDeletedItem}
+          onHandleCheck={onHandleCheck}
         />
       </ul>
     </section>

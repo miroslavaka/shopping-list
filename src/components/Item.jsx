@@ -1,13 +1,20 @@
+import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 
-const Item = ({ updatedItems, onDeletedItem }) => {
+const Item = ({ updatedItems, onDeletedItem, onHandleCheck }) => {
   return (
     <>
       {updatedItems.map((item) => (
         <li key={item.name} className="item">
-          <input type="checkbox"></input>
-          <span>{item.name}</span>
+          <input
+            type="checkbox"
+            value={item.selected}
+            onChange={() => onHandleCheck(item.name)}
+          ></input>
+          <span style={item.selected ? { textDecoration: 'line-through' } : {}}>
+            {item.name}
+          </span>
           <span>{item.quantity}</span>
           <span>{item.unit}</span>
           <button>
