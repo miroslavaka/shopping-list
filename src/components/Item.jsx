@@ -2,7 +2,17 @@ import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 
-const Item = ({ updatedItems, onDeletedItem, onHandleCheck }) => {
+const Item = ({ updatedItems, onHandleCheck, onDeletedItem, onHandleEdit }) => {
+  const [editing, setEditing] = useState(false);
+
+  let viewMode = {};
+  let editMode = {};
+  if (editing) {
+    viewMode.display = 'none';
+  } else {
+    editMode.display = 'none';
+  }
+
   return (
     <>
       {updatedItems.map((item) => (
@@ -11,13 +21,32 @@ const Item = ({ updatedItems, onDeletedItem, onHandleCheck }) => {
             type="checkbox"
             value={item.selected}
             onChange={() => onHandleCheck(item.name)}
-          ></input>
-          <span style={item.selected ? { textDecoration: 'line-through' } : {}}>
-            {item.name}
-          </span>
+          />
+
+          {editing ? (
+            <input
+              type="text"
+              //style={editMode}
+              value={item.name}
+              onChange={(e) => onHandleEdit(item.name, e.target.value)}
+              // onChange={(e) => onHandleEdit(item.name)}
+            />
+          ) : (
+            <span
+              style={item.selected ? { textDecoration: 'line-through' } : {}}
+            >
+              {item.name}
+            </span>
+          )}
+
           <span>{item.quantity}</span>
           <span>{item.unit}</span>
-          <button>
+          <button
+            // onClick={() => {
+            //   onTextEdit(item.name);
+            // }}
+            onClick={() => setEditing(true)}
+          >
             <FontAwesomeIcon
               style={{ color: '#42b983' }}
               icon={faPenToSquare}

@@ -2,13 +2,9 @@ import { useState } from 'react';
 import Header from './components/Header';
 import Form from './components/Form';
 import Items from './components/Items';
-//inspiration:
-//https://codepen.io/johnnycopes/pen/GjVLaL
-//https://codepen.io/amegahy/pen/NWKzeJy
-//https://codepen.io/Stradjazz/pen/dyYzXvx
-//https://codepen.io/mauriciospesot/pen/MGpvgZ
-//https://codepen.io/rajcsanyiz/pen/qxJEdW
-//https://nikolencz.github.io/ToDo-list/
+
+//https://ibaslogic.com/how-to-edit-todos-items-in-react/
+//https://www.robinwieruch.de/react-update-item-in-list/
 
 const initialItems = [
   { name: 'bread', quantity: '1', unit: 'pc', selected: false },
@@ -20,18 +16,10 @@ const initialItems = [
 
 function App() {
   const [updatedItems, setUpdatedItems] = useState(initialItems);
+  const [editText, setEditText] = useState(null);
 
   function handleAddItems(item) {
     setUpdatedItems((updatedItems) => [...updatedItems, item]);
-  }
-  console.log('updatedItems: ', updatedItems);
-
-  function handleDeleteItem(name) {
-    console.log('item to be deleted: ', name);
-    const updatedListAfterDelete = updatedItems.filter(
-      (item) => item.name !== name,
-    );
-    setUpdatedItems(updatedListAfterDelete);
   }
 
   function handleCheckItem(name) {
@@ -41,6 +29,37 @@ function App() {
     );
     setUpdatedItems(booksAfterUpdate);
   }
+
+  function handleDeleteItem(name) {
+    console.log('item to be deleted: ', name);
+    const updatedListAfterDelete = updatedItems.filter(
+      (item) => item.name !== name,
+    );
+    setUpdatedItems(updatedListAfterDelete);
+  }
+
+  // function handleTextEdit(name) {
+  //   console.log("text to be edited: ", name);
+  //   setItemEdited(name);
+  //   updatedItems.map((item) => {
+  //     if (item.name === name) return setEditing(true);
+  //   });
+  // }
+
+  function handleEdit(name, updatedName) {
+    console.log('handle change on name: ', name);
+    console.log('updatedName: ', updatedName);
+
+    setEditText([
+      ...updatedItems.map((item) => {
+        if (item.name === name) {
+          item.name = updatedName;
+        }
+      }),
+    ]);
+  }
+  console.log('new updated items: ', updatedItems);
+
   return (
     <>
       <div className="App">
@@ -49,8 +68,10 @@ function App() {
         <Items
           initialItems={initialItems}
           updatedItems={updatedItems}
-          onDeletedItem={handleDeleteItem}
           onHandleCheck={handleCheckItem}
+          onDeletedItem={handleDeleteItem}
+          onHandleEdit={handleEdit}
+          editText={editText}
         />
       </div>
     </>

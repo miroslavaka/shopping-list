@@ -3,8 +3,9 @@ import Item from './Item';
 const Items = ({
   initialItems,
   updatedItems,
-  onDeletedItem,
   onHandleCheck,
+  onDeletedItem,
+  onHandleEdit,
 }) => {
   return (
     <section className="list">
@@ -13,6 +14,7 @@ const Items = ({
           initialItems={initialItems}
           updatedItems={updatedItems}
           onDeletedItem={onDeletedItem}
+          onHandleEdit={onHandleEdit}
           onHandleCheck={onHandleCheck}
         />
       </ul>
