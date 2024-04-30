@@ -93,3 +93,27 @@ input[type='checkbox']:checked::before {
   background-color: olivedrab;
   cursor: pointer;
 }
+.sorting-clearing {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+select {
+  appearance: none;
+  font-family: 'Nunito Sans', sans-serif;
+  text-transform: uppercase;
+  border: 1px solid lightgray;
+  padding: 15px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn {
+  all: unset;
+  font-family: 'Nunito Sans', sans-serif;
+  text-transform: uppercase;
+  border: 1px solid lightgray;
+  padding: 15px;
+  border-radius: 4px;
+  cursor: pointer;
+}
